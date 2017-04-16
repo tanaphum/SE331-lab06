@@ -10,11 +10,20 @@ import 'rxjs/add/operator/switchMap';
 })
 export class StudentsViewComponent {
   constructor(private route: ActivatedRoute, private studentDataService:StudentsDataService) {}
-   student:Student;
-   ngOnInit() {
-      this.route.params
-        .switchMap((params:Params) => this.studentDataService.getStudent(+params['id']))
-        .subscribe((student:Student) => this.student = student);
+  student:Student;
+  isNoData:boolean;
+  ngOnInit() {
+    this.isNoData = false;
+
+    this.route.params
+      .switchMap((params:Params) =>  this.studentDataService.getStudent(+params['id']))
+      .subscribe((student:Student) => {
+          if (student !== null)
+            this.student = student;
+          else
+            this.isNoData = true;
+        }
+      );
 
   }
 }
