@@ -31,6 +31,7 @@ public class StudentDaoImpl2 extends AbstractStudentDao {
         student = new Student(2, "SE-002", "Nana", "Wic",
                 4.00, "images/Nana.gif", true, 0,
                 "The Wic");
+        students.add(student);
 
     }
     @Override

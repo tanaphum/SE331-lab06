@@ -47,10 +47,6 @@ public class StudentDaoImpl implements StudentDao {
                 2.15,imageBaseUrl + "Kloop.gif",true,2,
                 "The man for the Kop");
         students.add(student);
-        student = new Student(4,"SE-000","Chartchai","D",
-                5.00,imageBaseUrl + "temp.gif",true,0,
-                "The Special One");
-        students.add(student);
     }
 
     @Override
