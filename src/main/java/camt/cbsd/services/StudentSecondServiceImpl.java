@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Profile("secondDataSource")
-@Service
+
 public class StudentSecondServiceImpl implements StudentService {
     @Autowired
     StudentDao studentDao;
