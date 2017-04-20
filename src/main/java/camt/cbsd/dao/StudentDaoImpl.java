@@ -1,62 +1,48 @@
 package camt.cbsd.dao;
 
-import camt.cbsd.dao.StudentDao;
+
 import camt.cbsd.entity.Student;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created by CAMT on 3/24/2017.
+ * Created by Dto on 3/15/2017.
  */
 @Profile("firstDataSource")
-@ConfigurationProperties(prefix = "server")
-@Service
-public class StudentDaoImpl implements StudentDao {
-    List<Student> students;
-    String baseUrl;
-    String imageUrl;
+@ConfigurationProperties(prefix="server")
+@Repository
+public class StudentDaoImpl extends AbstractStudentDao {
 
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    String imageBaseUrl;
     @PostConstruct
     private void init(){
-        imageBaseUrl = baseUrl + imageUrl ;
-        students = new ArrayList<>();
+        imageBaseUrl = baseUrl + imageUrl;;
+       students = new ArrayList<>();
+
         Student student = new Student(1,"SE-001","Mitsuha","Miyamizu",
-                2.15,imageBaseUrl + "mitsuha.gif",true,0,
+                2.15,imageBaseUrl+"mitsuha.gif",true,0,
                 "The most beloved one");
         students.add(student);
         student = new Student(2,"SE-002","Prayuth","The minister",
-                3.59,imageBaseUrl + "tu.jpg",false,15,
+                3.59,imageBaseUrl+"tu.jpg",false,15,
                 "The great man ever!!!!");
         students.add(student);
         student = new Student(3,"SE-003","Jurgen","Kloop",
-                2.15,imageBaseUrl + "Kloop.gif",true,2,
+                2.15,imageBaseUrl+"Kloop.gif",true,2,
                 "The man for the Kop");
         students.add(student);
     }
 
-    @Override
-    public List<Student> getStudents(){
-        return students;
-    }
 
     @Override
-    public Student findById(long id) {
-        return students.stream().filter(s -> s.getId() == id).findFirst().get();
-
+    public Student addStudent(Student student) {
+            if(students.add(student))
+                return student;
+            else
+                return null;
     }
 }

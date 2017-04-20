@@ -3,11 +3,11 @@ package camt.cbsd.dao;
 import camt.cbsd.entity.Student;
 
 import java.util.List;
-/**
- * Created by Admin on 15/4/2560.
- */
 
-public abstract class AbstractStudentDao implements StudentDao {
+/**
+ * Created by Dto on 3/15/2017.
+ */
+public abstract class AbstractStudentDao implements StudentDao{
     List<Student> students;
     String baseUrl;
     String imageUrl;

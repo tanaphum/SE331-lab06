@@ -44,5 +44,10 @@ public class StudentDaoImpl2 extends AbstractStudentDao {
         return students.stream().filter(s -> s.getId() == id).findFirst().get();
 
     }
+
+    @Override
+    public Student addStudent(Student student) {
+        return null;
+    }
 }
 
